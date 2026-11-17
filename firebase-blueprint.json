@@ -1,0 +1,176 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Farmer or Seller profile stored under /users/{userId}. Contains PII so restricted to owner and admin.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID matching document ID" },
+        "name": { "type": "string", "description": "Full name in Bengali or English" },
+        "phone": { "type": "string", "description": "Bangladesh mobile number" },
+        "district": { "type": "string", "description": "District or upazila" },
+        "role": { "type": "string", "enum": ["FARMER", "SELLER"], "description": "User marketplace role" },
+        "shopName": { "type": "string", "description": "Seller shop name (empty for farmers)" },
+        "shopAddress": { "type": "string", "description": "Seller shop address" },
+        "nidOrLicense": { "type": "string", "description": "Seller NID or trade license reference" },
+        "sellerVerified": { "type": "boolean", "description": "Admin-verified seller badge status" },
+        "accountStatus": { "type": "string", "enum": ["ACTIVE", "SUSPENDED"], "description": "Account standing" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update" }
+      },
+      "required": ["userId", "name", "phone", "district", "role", "shopName", "shopAddress", "nidOrLicense", "sellerVerified", "accountStatus", "createdAt", "updatedAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Agricultural product listed in Krishi Bazar marketplace.",
+      "type": "object",
+      "properties": {
+        "sellerId": { "type": "string", "description": "Seller Firebase UID" },
+        "shopName": { "type": "string", "description": "Display shop name" },
+        "sellerVerified": { "type": "boolean", "description": "Whether seller is verified" },
+        "name": { "type": "string", "description": "Product name" },
+        "category": {
+          "type": "string",
+          "enum": ["কীটনাশক", "ছত্রাকনাশক", "আগাছানাশক", "সার", "বীজ", "কৃষি সরঞ্জাম", "সেচ সরঞ্জাম", "কৃষি সুরক্ষা সামগ্রী"]
+        },
+        "price": { "type": "number", "description": "Selling price in BDT" },
+        "originalPrice": { "type": "number", "description": "Original price before discount" },
+        "discountPercent": { "type": "integer", "description": "Discount percentage 0-90" },
+        "unit": { "type": "string", "description": "Pack unit e.g. ১ লিটার" },
+        "stock": { "type": "integer", "description": "Available stock count" },
+        "description": { "type": "string", "description": "Product description" },
+        "safetyGuide": { "type": "string", "description": "Approved usage and safety instructions" },
+        "approvalCode": { "type": "string", "description": "Authorized registration/approval code" },
+        "imageKey": { "type": "string", "description": "Preset artwork key or custom" },
+        "imageBase64": { "type": "string", "description": "Optional compressed product thumbnail base64" },
+        "badge": { "type": "string", "description": "Display badge e.g. বেস্ট সেলার" },
+        "status": { "type": "string", "enum": ["APPROVED", "PENDING", "REMOVED"] },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["sellerId", "shopName", "sellerVerified", "name", "category", "price", "originalPrice", "discountPercent", "unit", "stock", "description", "safetyGuide", "approvalCode", "imageKey", "imageBase64", "badge", "status", "featured", "createdAt", "updatedAt"]
+    },
+    "CartItem": {
+      "title": "CartItem",
+      "description": "Shopping cart item scoped to user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "shopName": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "unit": { "type": "string" },
+        "price": { "type": "number" },
+        "quantity": { "type": "integer" },
+        "imageKey": { "type": "string" },
+        "imageBase64": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "productId", "productName", "shopName", "sellerId", "unit", "price", "quantity", "imageKey", "imageBase64", "updatedAt"]
+    },
+    "FavoriteItem": {
+      "title": "FavoriteItem",
+      "description": "Saved favorite product scoped to user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "unit": { "type": "string" },
+        "shopName": { "type": "string" },
+        "sellerVerified": { "type": "boolean" },
+        "imageKey": { "type": "string" },
+        "imageBase64": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "productId", "productName", "category", "price", "unit", "shopName", "sellerVerified", "imageKey", "imageBase64", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Marketplace order linking buyer and seller.",
+      "type": "object",
+      "properties": {
+        "buyerId": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "buyerPhone": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "shopName": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string", "enum": ["PENDING", "CONFIRMED", "SHIPPED", "DELIVERED", "CANCELLED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["buyerId", "buyerName", "buyerPhone", "deliveryAddress", "sellerId", "shopName", "items", "totalAmount", "paymentMethod", "status", "createdAt", "updatedAt"]
+    },
+    "Complaint": {
+      "title": "Complaint",
+      "description": "Customer support or product/seller complaint.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "targetType": { "type": "string", "enum": ["PRODUCT", "ORDER", "SELLER", "GENERAL"] },
+        "targetId": { "type": "string" },
+        "status": { "type": "string", "enum": ["OPEN", "IN_REVIEW", "RESOLVED"] },
+        "adminNote": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "userName", "userPhone", "subject", "message", "targetType", "targetId", "status", "adminNote", "createdAt", "updatedAt"]
+    },
+    "UserNotification": {
+      "title": "UserNotification",
+      "description": "In-app notification scoped to user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "type": { "type": "string", "enum": ["ORDER", "OFFER", "SYSTEM"] },
+        "readStatus": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "body", "type", "readStatus", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Farmer and Seller profiles with private PII"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Publicly browsable approved marketplace products"
+    },
+    "/users/{userId}/cart/{productId}": {
+      "schema": { "$ref": "#/entities/CartItem" },
+      "description": "User shopping cart items"
+    },
+    "/users/{userId}/favorites/{productId}": {
+      "schema": { "$ref": "#/entities/FavoriteItem" },
+      "description": "User saved favorite products"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/UserNotification" },
+      "description": "User notifications"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Marketplace orders between buyer and seller"
+    },
+    "/complaints/{complaintId}": {
+      "schema": { "$ref": "#/entities/Complaint" },
+      "description": "Customer support and moderation complaints"
+    }
+  }
+}

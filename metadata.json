@@ -1,0 +1,6 @@
+{
+  "name": "কৃষি বাজার",
+  "description": "বাংলাদেশের কৃষক ও কৃষি দোকানদারদের জন্য আধুনিক বাংলা কৃষি ই-কমার্স মার্কেটপ্লেস",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

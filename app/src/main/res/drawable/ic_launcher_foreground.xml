@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Crisp white circular badge inside 66dp safe zone -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,24A30,30 0 1,0 54,84A30,30 0 1,0 54,24Z" />
+    <!-- Lush green crop hills at base of badge -->
+    <path
+        android:fillColor="#FF1B8A3A"
+        android:pathData="M28,62C36,54 50,55 62,62C70,66 76,65 80,62A27,27 0 0,1 28,62Z" />
+    <!-- Bright lime secondary leaf accent -->
+    <path
+        android:fillColor="#FF8BC34A"
+        android:pathData="M54,32C44,32 37,39 37,48C45,48 52,42 54,32Z" />
+    <!-- Main bold emerald leaf & stem -->
+    <path
+        android:fillColor="#FF0D6B2A"
+        android:pathData="M54,31C65,31 72,38 72,48C63,49 56,43 54,31ZM53,43L55,43L55,61L53,61Z" />
+    <!-- Golden harvest grain accent -->
+    <path
+        android:fillColor="#FFFFC107"
+        android:pathData="M45,67L63,67C61,72 58,75 54,75C50,75 47,72 45,67Z" />
+</vector>
