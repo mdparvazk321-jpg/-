@@ -63,18 +63,17 @@ import com.example.data.toBengaliDigits
 import com.example.data.toBengaliPrice
 import com.example.model.Product
 import com.example.ui.components.ProductVisual
-import com.example.ui.theme.AmberContainer
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
+import com.example.ui.theme.LimeAccent
 import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.SoftGrayText
 import com.example.ui.theme.SoftMintCard
-import com.example.ui.theme.VerifiedSky
 
 @Composable
 fun ProductDetailScreen(
@@ -126,7 +125,7 @@ fun ProductDetailScreen(
                         Icon(
                             imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                             contentDescription = "পছন্দ করুন",
-                            tint = if (isFavorite) CrimsonBadge else PureWhite
+                            tint = if (isFavorite) LimeAccent else PureWhite
                         )
                     }
                 }
@@ -230,7 +229,7 @@ fun ProductDetailScreen(
                             }
                             if (product.badge.isNotBlank()) {
                                 Surface(
-                                    color = CrimsonBadge,
+                                    color = ForestGreen,
                                     shape = RoundedCornerShape(50)
                                 ) {
                                     Text(
@@ -287,7 +286,7 @@ fun ProductDetailScreen(
                             Text(
                                 text = "মজুত আছে: ${product.stock.toBengaliDigits()}টি",
                                 style = MaterialTheme.typography.labelLarge,
-                                color = if (product.stock > 0) ForestGreen else CrimsonBadge
+                                color = if (product.stock > 0) ForestGreen else MutedSage
                             )
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
@@ -362,7 +361,7 @@ fun ProductDetailScreen(
                                     Icon(
                                         imageVector = Icons.Filled.Verified,
                                         contentDescription = "যাচাইকৃত বিক্রেতা",
-                                        tint = VerifiedSky,
+                                        tint = EmeraldGreen,
                                         modifier = Modifier.size(16.dp)
                                     )
                                 }
@@ -405,8 +404,8 @@ fun ProductDetailScreen(
                 // Approved Safety & Legal Compliance Box
                 Card(
                     shape = RoundedCornerShape(18.dp),
-                    colors = CardDefaults.cardColors(containerColor = AmberContainer),
-                    border = BorderStroke(1.dp, Color(0xFFFCD34D))
+                    colors = CardDefaults.cardColors(containerColor = SoftMintCard),
+                    border = BorderStroke(1.dp, BorderGreenTint)
                 ) {
                     Column(
                         modifier = Modifier
@@ -418,20 +417,20 @@ fun ProductDetailScreen(
                             Icon(
                                 imageVector = Icons.Filled.Security,
                                 contentDescription = null,
-                                tint = Color(0xFFB45309)
+                                tint = ForestGreen
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = "অনুমোদিত তথ্য ও নিরাপত্তা নির্দেশনা",
                                 style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
-                                color = Color(0xFF78350F)
+                                color = DeepForestGreen
                             )
                         }
                         if (product.approvalCode.isNotBlank()) {
                             Text(
                                 text = "অনুমোদন / নিবন্ধন কোড: ${product.approvalCode}",
                                 style = MaterialTheme.typography.labelLarge,
-                                color = Color(0xFF92400E)
+                                color = ForestGreen
                             )
                         }
                         Text(
@@ -439,7 +438,7 @@ fun ProductDetailScreen(
                                 "প্রযোজ্য আইন ও কৃষি কর্মকর্তার পরামর্শ মেনে অনুমোদিত মাত্রায় ব্যবহার করুন।"
                             },
                             style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF78350F)
+                            color = DeepInk
                         )
                     }
                 }
@@ -447,7 +446,7 @@ fun ProductDetailScreen(
                 OutlinedButton(
                     onClick = { showReportDialog = true },
                     shape = RoundedCornerShape(50),
-                    border = BorderStroke(1.dp, CrimsonBadge),
+                    border = BorderStroke(1.dp, ForestGreen),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(48.dp)
@@ -455,13 +454,13 @@ fun ProductDetailScreen(
                     Icon(
                         imageVector = Icons.Filled.ReportProblem,
                         contentDescription = null,
-                        tint = CrimsonBadge,
+                        tint = ForestGreen,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = "পণ্য সম্পর্কে অভিযোগ / রিপোর্ট করুন",
-                        color = CrimsonBadge
+                        color = ForestGreen
                     )
                 }
             }

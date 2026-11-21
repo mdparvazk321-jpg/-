@@ -77,7 +77,7 @@ import com.example.model.Product
 import com.example.model.UserProfile
 import com.example.ui.components.ProductVisual
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
@@ -85,8 +85,7 @@ import com.example.ui.theme.LimeAccent
 import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
-import com.example.ui.theme.SoftMintCard
-import com.example.ui.theme.VerifiedSky
+import com.example.ui.theme.VibrantGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -279,7 +278,7 @@ fun SellerDashboardScreen(
                                         Text(
                                             text = "দাম/স্টক",
                                             style = MaterialTheme.typography.labelSmall,
-                                            color = VerifiedSky,
+                                            color = EmeraldGreen,
                                             modifier = Modifier
                                                 .clickable { quickEditProduct = prod }
                                                 .padding(4.dp)
@@ -340,7 +339,7 @@ fun SellerDashboardScreen(
                                             if (st == OrderStatus.CONFIRMED) {
                                                 Button(
                                                     onClick = { onUpdateOrderStatus(order.id, OrderStatus.SHIPPED) },
-                                                    colors = ButtonDefaults.buttonColors(containerColor = VerifiedSky),
+                                                    colors = ButtonDefaults.buttonColors(containerColor = VibrantGreen),
                                                     modifier = Modifier.weight(1f)
                                                 ) { Text("পাঠিয়ে দিন") }
                                             }
@@ -595,7 +594,7 @@ private fun AddEditProductForm(
         )
 
         if (formError != null) {
-            Text(formError.orEmpty(), color = CrimsonBadge, style = MaterialTheme.typography.bodySmall)
+            Text(formError.orEmpty(), color = DeepForestGreen, style = MaterialTheme.typography.bodySmall)
         }
 
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {

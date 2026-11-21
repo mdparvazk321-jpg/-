@@ -69,7 +69,7 @@ import com.example.model.UserProfile
 import com.example.model.UserRole
 import com.example.ui.components.ProductVisual
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
@@ -78,7 +78,7 @@ import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.SoftMintCard
-import com.example.ui.theme.VerifiedSky
+import com.example.ui.theme.VibrantGreen
 
 @Composable
 fun ProfileScreen(
@@ -197,7 +197,7 @@ fun ProfileScreen(
                         icon = Icons.Filled.AdminPanelSettings,
                         title = "অ্যাডমিন প্যানেল (Admin Dashboard)",
                         subtitle = "ব্যবহারকারী, বিক্রেতা যাচাই, পণ্য পর্যালোচনা, অভিযোগ ও রিপোর্ট",
-                        accent = Color(0xFF0F766E),
+                        accent = DeepForestGreen,
                         onClick = onOpenAdminDashboard,
                         tag = "profile_admin_dashboard_btn"
                     )
@@ -207,7 +207,7 @@ fun ProfileScreen(
                     icon = Icons.Filled.Favorite,
                     title = "পছন্দের পণ্য তালিকা ($favoriteCount)",
                     subtitle = "সংরক্ষিত পছন্দের কৃষি পণ্যগুলো দেখুন",
-                    accent = CrimsonBadge,
+                    accent = VibrantGreen,
                     onClick = onOpenFavorites,
                     tag = "profile_favorites_btn"
                 )
@@ -216,7 +216,7 @@ fun ProfileScreen(
                     icon = Icons.Filled.SupportAgent,
                     title = "কাস্টমার সাপোর্ট ও অভিযোগ",
                     subtitle = "সাহায্য নিন অথবা পণ্যের মান নিয়ে অভিযোগ জানান",
-                    accent = VerifiedSky,
+                    accent = EmeraldGreen,
                     onClick = onOpenSupport,
                     tag = "profile_support_btn"
                 )
@@ -235,7 +235,7 @@ fun ProfileScreen(
                 OutlinedButton(
                     onClick = onSignOut,
                     shape = RoundedCornerShape(50),
-                    border = BorderStroke(1.2.dp, CrimsonBadge),
+                    border = BorderStroke(1.2.dp, ForestGreen),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp)
@@ -244,11 +244,11 @@ fun ProfileScreen(
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.Logout,
                         contentDescription = null,
-                        tint = CrimsonBadge,
+                        tint = ForestGreen,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("নিরাপদ লগআউট করুন", color = CrimsonBadge, fontWeight = FontWeight.Bold)
+                    Text("নিরাপদ লগআউট করুন", color = ForestGreen, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -397,7 +397,7 @@ fun FavoritesScreen(
                                 Text("${fav.price.toBengaliPrice()} / ${fav.unit}", style = MaterialTheme.typography.labelLarge, color = ForestGreen)
                             }
                             IconButton(onClick = { onRemoveFavorite(fav) }) {
-                                Icon(Icons.Filled.Favorite, contentDescription = "সরান", tint = CrimsonBadge)
+                                Icon(Icons.Filled.Favorite, contentDescription = "সরান", tint = EmeraldGreen)
                             }
                         }
                     }
@@ -474,7 +474,7 @@ fun SupportComplaintsScreen(
                             modifier = Modifier.fillMaxWidth()
                         )
                         if (errorMsg != null) {
-                            Text(errorMsg.orEmpty(), color = CrimsonBadge, style = MaterialTheme.typography.bodySmall)
+                            Text(errorMsg.orEmpty(), color = DeepForestGreen, style = MaterialTheme.typography.bodySmall)
                         }
                         Button(
                             onClick = {

@@ -64,7 +64,6 @@ import com.example.model.ProductStatus
 import com.example.model.UserProfile
 import com.example.model.UserRole
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
 import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
@@ -74,7 +73,7 @@ import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.SoftMintCard
-import com.example.ui.theme.VerifiedSky
+import com.example.ui.theme.VibrantGreen
 
 @Composable
 fun AdminDashboardScreen(
@@ -162,14 +161,14 @@ fun AdminDashboardScreen(
                         }
                         item {
                             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                                AdminStatCard("মোট কৃষক", farmersCount.toBengaliDigits(), VerifiedSky, Modifier.weight(1f))
-                                AdminStatCard("মোট দোকানদার", "$sellersCount (যাচাইকৃত $verifiedSellersCount)".toBengaliDigits(), Color(0xFF0F766E), Modifier.weight(1f))
+                                AdminStatCard("মোট কৃষক", farmersCount.toBengaliDigits(), EmeraldGreen, Modifier.weight(1f))
+                                AdminStatCard("মোট দোকানদার", "$sellersCount (যাচাইকৃত $verifiedSellersCount)".toBengaliDigits(), DeepForestGreen, Modifier.weight(1f))
                             }
                         }
                         item {
                             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                                 AdminStatCard("তালিকাভুক্ত পণ্য", products.size.toBengaliDigits(), ForestGreen, Modifier.weight(1f))
-                                AdminStatCard("চলমান অভিযোগ", openComplaints.toBengaliDigits(), CrimsonBadge, Modifier.weight(1f))
+                                AdminStatCard("চলমান অভিযোগ", openComplaints.toBengaliDigits(), VibrantGreen, Modifier.weight(1f))
                             }
                         }
                         item {
@@ -223,7 +222,7 @@ fun AdminDashboardScreen(
                                             Text(user.name, style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold), color = DeepInk)
                                             if (user.sellerVerified) {
                                                 Spacer(modifier = Modifier.width(4.dp))
-                                                Icon(Icons.Filled.Verified, contentDescription = null, tint = VerifiedSky, modifier = Modifier.size(16.dp))
+                                                Icon(Icons.Filled.Verified, contentDescription = null, tint = EmeraldGreen, modifier = Modifier.size(16.dp))
                                             }
                                         }
                                         Surface(color = SoftMintCard, shape = RoundedCornerShape(50)) {
@@ -248,12 +247,12 @@ fun AdminDashboardScreen(
                                         }
                                         OutlinedButton(
                                             onClick = { onToggleAccountStatus(user.userId, user.accountStatus) },
-                                            border = BorderStroke(1.dp, if (user.accountStatus == "ACTIVE") CrimsonBadge else ForestGreen),
+                                            border = BorderStroke(1.dp, if (user.accountStatus == "ACTIVE") MutedSage else ForestGreen),
                                             modifier = Modifier.weight(1f)
                                         ) {
                                             Text(
                                                 text = if (user.accountStatus == "ACTIVE") "স্থগিত করুন" else "সক্রিয় করুন",
-                                                color = if (user.accountStatus == "ACTIVE") CrimsonBadge else ForestGreen
+                                                color = if (user.accountStatus == "ACTIVE") DeepForestGreen else ForestGreen
                                             )
                                         }
                                     }
@@ -281,7 +280,7 @@ fun AdminDashboardScreen(
                                         horizontalArrangement = Arrangement.SpaceBetween
                                     ) {
                                         Text(prod.name, style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold), color = DeepInk)
-                                        Text(st.bengaliLabel, style = MaterialTheme.typography.labelLarge, color = if (st == ProductStatus.REMOVED) CrimsonBadge else ForestGreen)
+                                        Text(st.bengaliLabel, style = MaterialTheme.typography.labelLarge, color = if (st == ProductStatus.REMOVED) MutedSage else ForestGreen)
                                     }
                                     Text("${prod.category} • ${prod.shopName} • ${prod.price.toBengaliPrice()}", style = MaterialTheme.typography.bodySmall, color = MutedSage)
                                     if (prod.approvalCode.isNotBlank()) {
@@ -299,12 +298,12 @@ fun AdminDashboardScreen(
                                         }
                                         OutlinedButton(
                                             onClick = { onModerateProduct(prod.id, ProductStatus.REMOVED) },
-                                            border = BorderStroke(1.dp, CrimsonBadge),
+                                            border = BorderStroke(1.dp, MutedSage),
                                             modifier = Modifier.weight(1f)
                                         ) {
-                                            Icon(Icons.Filled.Block, contentDescription = null, tint = CrimsonBadge, modifier = Modifier.size(16.dp))
+                                            Icon(Icons.Filled.Block, contentDescription = null, tint = DeepForestGreen, modifier = Modifier.size(16.dp))
                                             Spacer(modifier = Modifier.width(4.dp))
-                                            Text("নিষিদ্ধ/অপসারণ", color = CrimsonBadge)
+                                            Text("নিষিদ্ধ/অপসারণ", color = DeepForestGreen)
                                         }
                                     }
                                 }
@@ -379,9 +378,9 @@ fun AdminDashboardScreen(
                                         if (st != OrderStatus.CANCELLED) {
                                             OutlinedButton(
                                                 onClick = { onUpdateOrderStatus(order.id, OrderStatus.CANCELLED) },
-                                                border = BorderStroke(1.dp, CrimsonBadge),
+                                                border = BorderStroke(1.dp, MutedSage),
                                                 modifier = Modifier.weight(1f)
-                                            ) { Text("বাতিল", color = CrimsonBadge) }
+                                            ) { Text("বাতিল", color = DeepForestGreen) }
                                         }
                                     }
                                 }

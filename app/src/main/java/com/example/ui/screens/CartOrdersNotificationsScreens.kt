@@ -65,7 +65,7 @@ import com.example.model.UserNotification
 import com.example.model.UserProfile
 import com.example.ui.components.ProductVisual
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
@@ -73,6 +73,7 @@ import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.SoftMintCard
+import com.example.ui.theme.VibrantGreen
 
 @Composable
 fun CartCheckoutScreen(
@@ -182,7 +183,7 @@ fun CartCheckoutScreen(
                                     Icon(
                                         imageVector = if (item.quantity <= 1L) Icons.Filled.Delete else Icons.Filled.Remove,
                                         contentDescription = "কমান",
-                                        tint = if (item.quantity <= 1L) CrimsonBadge else ForestGreen,
+                                        tint = ForestGreen,
                                         modifier = Modifier.size(18.dp)
                                     )
                                 }
@@ -250,7 +251,7 @@ fun CartCheckoutScreen(
                             }
 
                             if (errorText != null) {
-                                Text(errorText.orEmpty(), color = CrimsonBadge, style = MaterialTheme.typography.bodySmall)
+                                Text(errorText.orEmpty(), color = DeepForestGreen, style = MaterialTheme.typography.bodySmall)
                             }
 
                             Row(
@@ -341,10 +342,10 @@ fun OrdersScreen(
                     val status = OrderStatus.fromRaw(order.status)
                     val statusColor = when (status) {
                         OrderStatus.DELIVERED -> ForestGreen
-                        OrderStatus.SHIPPED -> Color(0xFF0284C7)
+                        OrderStatus.SHIPPED -> VibrantGreen
                         OrderStatus.CONFIRMED -> EmeraldGreen
-                        OrderStatus.CANCELLED -> CrimsonBadge
-                        OrderStatus.PENDING -> Color(0xFFD97706)
+                        OrderStatus.CANCELLED -> MutedSage
+                        OrderStatus.PENDING -> DeepForestGreen
                     }
                     Card(
                         shape = RoundedCornerShape(18.dp),
@@ -395,10 +396,10 @@ fun OrdersScreen(
                                 OutlinedButton(
                                     onClick = { onCancelOrder(order) },
                                     shape = RoundedCornerShape(50),
-                                    border = BorderStroke(1.dp, CrimsonBadge),
+                                    border = BorderStroke(1.dp, ForestGreen),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("অর্ডার বাতিল করুন", color = CrimsonBadge)
+                                    Text("অর্ডার বাতিল করুন", color = ForestGreen)
                                 }
                             }
                         }
@@ -488,7 +489,7 @@ fun NotificationsScreen(
                                 Box(
                                     modifier = Modifier
                                         .size(9.dp)
-                                        .background(CrimsonBadge, CircleShape)
+                                        .background(EmeraldGreen, CircleShape)
                                 )
                             }
                         }

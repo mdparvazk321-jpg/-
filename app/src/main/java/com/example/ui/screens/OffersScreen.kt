@@ -35,12 +35,13 @@ import androidx.compose.ui.unit.dp
 import com.example.data.toBengaliDigits
 import com.example.model.Product
 import com.example.ui.components.ProductCard
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
 import com.example.ui.theme.LimeAccent
 import com.example.ui.theme.MintBackground
 import com.example.ui.theme.PureWhite
+import com.example.ui.theme.VibrantGreen
 
 @Composable
 fun OffersScreen(
@@ -112,7 +113,7 @@ fun OffersScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .background(
-                                Brush.horizontalGradient(listOf(EmeraldGreen, Color(0xFF0D9488)))
+                                Brush.horizontalGradient(listOf(DeepForestGreen, ForestGreen, VibrantGreen))
                             )
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -131,13 +132,13 @@ fun OffersScreen(
                             )
                         }
                         Surface(
-                            color = CrimsonBadge,
+                            color = PureWhite,
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Text(
                                 text = "১৭% পর্যন্ত\nছাড়",
                                 style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                                color = PureWhite,
+                                color = ForestGreen,
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
                             )
                         }

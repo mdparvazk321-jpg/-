@@ -39,14 +39,15 @@ import com.example.model.AgroCategories
 import com.example.model.Product
 import com.example.ui.components.CategoryIconTile
 import com.example.ui.components.ProductCard
-import com.example.ui.theme.AmberContainer
 import com.example.ui.theme.BorderGreenTint
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
 import com.example.ui.theme.MintBackground
 import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
+import com.example.ui.theme.SoftMintCard
 
 @Composable
 fun CategoriesScreen(
@@ -136,9 +137,9 @@ fun CategoriesScreen(
             item {
                 Spacer(modifier = Modifier.height(10.dp))
                 Surface(
-                    color = AmberContainer,
+                    color = SoftMintCard,
                     shape = RoundedCornerShape(14.dp),
-                    border = BorderStroke(1.dp, Color(0xFFFCD34D)),
+                    border = BorderStroke(1.dp, BorderGreenTint),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 14.dp)
@@ -150,14 +151,14 @@ fun CategoriesScreen(
                         Icon(
                             imageVector = Icons.Filled.VerifiedUser,
                             contentDescription = null,
-                            tint = Color(0xFFB45309),
+                            tint = ForestGreen,
                             modifier = Modifier.size(22.dp)
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = "কীটনাশক, ছত্রাকনাশক ও আগাছানাশকের ক্ষেত্রে কেবল অনুমোদিত নিবন্ধন তথ্য, নিরাপত্তা নির্দেশনা এবং প্রযোজ্য আইন মেনে যাচাইকৃত পণ্য প্রদর্শিত হয়।",
                             style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF78350F)
+                            color = DeepForestGreen
                         )
                     }
                 }

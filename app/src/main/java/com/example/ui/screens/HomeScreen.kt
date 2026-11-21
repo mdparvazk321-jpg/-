@@ -76,7 +76,6 @@ import com.example.ui.components.HeroBannerCarousel
 import com.example.ui.components.KrishiLogoEmblem
 import com.example.ui.components.ProductCard
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
 import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
@@ -443,14 +442,15 @@ fun HomeScreen(
 
                         if (!catalogError.isNullOrBlank()) {
                             Surface(
-                                color = Color(0xFFFFF7ED),
+                                color = SoftMintCard,
                                 shape = RoundedCornerShape(10.dp),
+                                border = BorderStroke(1.dp, BorderGreenTint),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
                                     text = "লাইভ সার্ভার সিঙ্ক সতর্কতা: প্রাথমিক অনুমোদিত তালিকা দেখানো হচ্ছে।",
                                     style = MaterialTheme.typography.labelSmall,
-                                    color = Color(0xFF9A3412),
+                                    color = DeepForestGreen,
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                                 )
                             }
@@ -636,20 +636,20 @@ private fun HeaderBadgeIcon(
         }
         if (count > 0) {
             Surface(
-                color = CrimsonBadge,
+                color = PureWhite,
                 shape = CircleShape,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(top = 4.dp, end = 4.dp)
-                    .border(1.5.dp, PureWhite, CircleShape)
+                    .border(1.5.dp, ForestGreen, CircleShape)
             ) {
                 Text(
                     text = count.toBengaliDigits(),
                     style = MaterialTheme.typography.labelSmall.copy(
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.ExtraBold,
                         fontSize = 10.sp
                     ),
-                    color = PureWhite,
+                    color = ForestGreen,
                     modifier = Modifier.padding(horizontal = 5.dp, vertical = 1.dp)
                 )
             }

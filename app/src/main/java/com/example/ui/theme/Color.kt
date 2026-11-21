@@ -2,25 +2,28 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val ForestGreen = Color(0xFF0A6825)
+// Core White & Green (সাদা ও সবুজ) Palette
+val ForestGreen = Color(0xFF0A6E28)
 val DeepForestGreen = Color(0xFF064E1B)
 val EmeraldGreen = Color(0xFF15803D)
-val VibrantGreen = Color(0xFF1B9E3E)
+val VibrantGreen = Color(0xFF1E9E46)
+val SoftGreenAccent = Color(0xFF22C55E)
 val LimeAccent = Color(0xFFD9FF4B)
 val LimePill = Color(0xFFE6FF6E)
 
-val MintBackground = Color(0xFFF3FAF4)
-val SoftMintCard = Color(0xFFEBF7ED)
 val PureWhite = Color(0xFFFFFFFF)
-val BorderGreenTint = Color(0xFFD4EAD8)
+val MintBackground = Color(0xFFF6FBF7)
+val SoftMintCard = Color(0xFFE9F7EC)
+val BorderGreenTint = Color(0xFFCDE8D3)
 
-val DeepInk = Color(0xFF102A16)
-val MutedSage = Color(0xFF4C6652)
-val SoftGrayText = Color(0xFF6B7280)
+val DeepInk = Color(0xFF0F2915)
+val MutedSage = Color(0xFF45634B)
+val SoftGrayText = Color(0xFF5E7A64)
 
-val CrimsonBadge = Color(0xFFE11D48)
-val AmberHighlight = Color(0xFFF59E0B)
-val AmberContainer = Color(0xFFFEF3C7)
-val VerifiedSky = Color(0xFF0284C7)
-val DangerRed = Color(0xFFDC2626)
-val DangerContainer = Color(0xFFFEE2E2)
+// Kept as green/white-aligned semantic tokens so the entire app stays pure White & Green
+val CrimsonBadge = ForestGreen
+val AmberHighlight = VibrantGreen
+val AmberContainer = SoftMintCard
+val VerifiedSky = EmeraldGreen
+val DangerRed = Color(0xFF14532D)
+val DangerContainer = Color(0xFFE5F5E9)

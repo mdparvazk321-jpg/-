@@ -68,14 +68,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.ImageUtils
 import com.example.model.AgroCategory
-import com.example.ui.theme.AmberHighlight
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.BorderGreenTint
 import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
 import com.example.ui.theme.LimeAccent
 import com.example.ui.theme.PureWhite
+import com.example.ui.theme.SoftMintCard
 import com.example.ui.theme.VibrantGreen
 
 @Composable
@@ -170,7 +170,7 @@ fun HeroBannerCarousel(
                 headlineBottom = "সাশ্রয়ী বাজার",
                 subQuote = "বীজ, সার ও সেচ সরঞ্জামে বিশেষ অফার",
                 ctaText = "অফার দেখুন",
-                accentColor = Color(0xFF0F766E)
+                accentColor = ForestGreen
             )
         )
     }
@@ -266,12 +266,12 @@ fun HeroBannerCarousel(
                         size = Size(w * 0.09f - 8f, h * 0.14f),
                         cornerRadius = CornerRadius(6f, 6f)
                     )
-                    // Farmer hat + joyful silhouette on far right
+                    // Farmer hat + joyful silhouette on far right (white & green attire)
                     val fx = w * 0.86f
                     val fy = h * 0.30f
-                    // Straw hat
+                    // Woven straw-green farmer hat
                     drawArc(
-                        color = Color(0xFFD99B26),
+                        color = Color(0xFF81C784),
                         startAngle = 180f,
                         sweepAngle = 180f,
                         useCenter = true,
@@ -279,32 +279,32 @@ fun HeroBannerCarousel(
                         size = Size(52f, 34f)
                     )
                     drawOval(
-                        color = Color(0xFFE9B44C),
+                        color = Color(0xFFA5D6A7),
                         topLeft = Offset(fx - 38f, fy - 10f),
                         size = Size(76f, 14f)
                     )
                     // Face
                     drawCircle(
-                        color = Color(0xFFB97A57),
+                        color = Color(0xFFD7EBD9),
                         radius = 16f,
                         center = Offset(fx, fy + 14f)
                     )
-                    // Shirt / Gamcha accent
+                    // Crisp White shirt with Emerald Green gamcha accent
                     drawRoundRect(
-                        color = Color(0xFFE3F2FD),
+                        color = PureWhite,
                         topLeft = Offset(fx - 26f, fy + 30f),
                         size = Size(52f, h * 0.48f),
                         cornerRadius = CornerRadius(18f, 18f)
                     )
                     drawLine(
-                        color = CrimsonBadge,
+                        color = EmeraldGreen,
                         start = Offset(fx - 12f, fy + 32f),
                         end = Offset(fx + 6f, fy + 70f),
                         strokeWidth = 7f
                     )
-                    // Golden grain bowl at bottom right
+                    // Harvest bowl at bottom right in white & green
                     drawArc(
-                        color = Color(0xFFA16207),
+                        color = DeepForestGreen,
                         startAngle = 0f,
                         sweepAngle = 180f,
                         useCenter = true,
@@ -312,7 +312,7 @@ fun HeroBannerCarousel(
                         size = Size(w * 0.17f, h * 0.28f)
                     )
                     drawOval(
-                        color = AmberHighlight,
+                        color = LimeAccent,
                         topLeft = Offset(w * 0.69f, h * 0.66f),
                         size = Size(w * 0.15f, h * 0.10f)
                     )
@@ -357,7 +357,7 @@ fun HeroBannerCarousel(
                                 lineHeight = 26.sp,
                                 fontWeight = FontWeight.Bold
                             ),
-                            color = CrimsonBadge
+                            color = DeepForestGreen
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
@@ -429,24 +429,14 @@ fun CategoryIconTile(
     modifier: Modifier = Modifier
 ) {
     val bgTint = when (category.imageKey) {
-        "insecticide" -> Color(0xFFE8F7EA)
-        "fungicide" -> Color(0xFFE6F3FC)
-        "herbicide" -> Color(0xFFECF9E8)
-        "urea" -> Color(0xFFFFF4E3)
-        "seeds" -> Color(0xFFFFF8DF)
-        "tools" -> Color(0xFFF3EFFB)
-        "irrigation" -> Color(0xFFE5F6F8)
-        else -> Color(0xFFFCEEEE)
+        "insecticide", "herbicide", "seeds", "irrigation" -> SoftMintCard
+        else -> Color(0xFFF1F9F3)
     }
     val iconTint = when (category.imageKey) {
-        "insecticide" -> ForestGreen
-        "fungicide" -> Color(0xFF0284C7)
-        "herbicide" -> VibrantGreen
-        "urea" -> Color(0xFFD97706)
-        "seeds" -> Color(0xFFCA8A04)
-        "tools" -> Color(0xFF7C3AED)
-        "irrigation" -> Color(0xFF0891B2)
-        else -> CrimsonBadge
+        "insecticide", "seeds" -> ForestGreen
+        "fungicide", "irrigation" -> EmeraldGreen
+        "herbicide", "safety" -> VibrantGreen
+        else -> DeepForestGreen
     }
     val iconVec = when (category.imageKey) {
         "insecticide" -> Icons.Filled.Sanitizer
@@ -587,14 +577,14 @@ fun ProductVisual(
                     }
                     "fungicide", "herbicide", "insecticide" -> {
                         val capColor = when (imageKey) {
-                            "fungicide" -> Color(0xFF0284C7)
+                            "fungicide" -> EmeraldGreen
                             "herbicide" -> ForestGreen
-                            else -> Color(0xFFD97706)
+                            else -> DeepForestGreen
                         }
                         val labelColor = when (imageKey) {
-                            "fungicide" -> Color(0xFF0EA5E9)
-                            "herbicide" -> VibrantGreen
-                            else -> Color(0xFFF59E0B)
+                            "fungicide" -> VibrantGreen
+                            "herbicide" -> EmeraldGreen
+                            else -> ForestGreen
                         }
                         // Bottle cap
                         drawRoundRect(
@@ -611,7 +601,7 @@ fun ProductVisual(
                             cornerRadius = CornerRadius(22f, 22f)
                         )
                         drawRoundRect(
-                            color = Color(0xFFCBD5E1),
+                            color = BorderGreenTint,
                             topLeft = Offset(w * 0.24f, h * 0.22f),
                             size = Size(w * 0.52f, h * 0.68f),
                             cornerRadius = CornerRadius(22f, 22f),
@@ -619,7 +609,7 @@ fun ProductVisual(
                         )
                         // Label band
                         drawRoundRect(
-                            color = labelColor.copy(alpha = 0.18f),
+                            color = labelColor.copy(alpha = 0.16f),
                             topLeft = Offset(w * 0.27f, h * 0.36f),
                             size = Size(w * 0.46f, h * 0.40f),
                             cornerRadius = CornerRadius(10f, 10f)
@@ -632,12 +622,19 @@ fun ProductVisual(
                         )
                     }
                     "seeds" -> {
-                        // Kraft golden seed pouch
+                        // Crisp white & green seed pouch
                         drawRoundRect(
-                            color = Color(0xFFE7C78C),
+                            color = PureWhite,
                             topLeft = Offset(w * 0.20f, h * 0.14f),
                             size = Size(w * 0.60f, h * 0.74f),
                             cornerRadius = CornerRadius(16f, 16f)
+                        )
+                        drawRoundRect(
+                            color = BorderGreenTint,
+                            topLeft = Offset(w * 0.20f, h * 0.14f),
+                            size = Size(w * 0.60f, h * 0.74f),
+                            cornerRadius = CornerRadius(16f, 16f),
+                            style = Stroke(width = 3f)
                         )
                         drawRoundRect(
                             color = ForestGreen,
@@ -646,35 +643,48 @@ fun ProductVisual(
                             cornerRadius = CornerRadius(12f, 12f)
                         )
                         drawCircle(
-                            color = AmberHighlight,
+                            color = LimeAccent,
                             radius = w * 0.10f,
                             center = Offset(w * 0.50f, h * 0.51f)
                         )
                     }
                     "tools" -> {
-                        // Sprayer tank
+                        // White & emerald sprayer tank
                         drawRoundRect(
-                            color = Color(0xFF2563EB),
+                            color = PureWhite,
                             topLeft = Offset(w * 0.26f, h * 0.20f),
                             size = Size(w * 0.48f, h * 0.68f),
                             cornerRadius = CornerRadius(18f, 18f)
                         )
                         drawRoundRect(
-                            color = AmberHighlight,
+                            color = EmeraldGreen,
+                            topLeft = Offset(w * 0.26f, h * 0.20f),
+                            size = Size(w * 0.48f, h * 0.68f),
+                            cornerRadius = CornerRadius(18f, 18f),
+                            style = Stroke(width = 4f)
+                        )
+                        drawRoundRect(
+                            color = ForestGreen,
                             topLeft = Offset(w * 0.36f, h * 0.10f),
                             size = Size(w * 0.28f, h * 0.12f),
                             cornerRadius = CornerRadius(8f, 8f)
                         )
+                        drawRoundRect(
+                            color = VibrantGreen.copy(alpha = 0.22f),
+                            topLeft = Offset(w * 0.32f, h * 0.38f),
+                            size = Size(w * 0.36f, h * 0.32f),
+                            cornerRadius = CornerRadius(10f, 10f)
+                        )
                     }
                     "irrigation" -> {
                         drawCircle(
-                            color = Color(0xFF0891B2),
+                            color = ForestGreen,
                             radius = w * 0.30f,
                             center = Offset(w * 0.50f, h * 0.52f),
                             style = Stroke(width = 16f)
                         )
                         drawCircle(
-                            color = Color(0xFF22D3EE),
+                            color = VibrantGreen,
                             radius = w * 0.18f,
                             center = Offset(w * 0.50f, h * 0.52f),
                             style = Stroke(width = 10f)

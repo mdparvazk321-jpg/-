@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.sp
 import com.example.data.toBengaliPrice
 import com.example.model.Product
 import com.example.ui.theme.BorderGreenTint
-import com.example.ui.theme.CrimsonBadge
+import com.example.ui.theme.DeepForestGreen
 import com.example.ui.theme.DeepInk
 import com.example.ui.theme.EmeraldGreen
 import com.example.ui.theme.ForestGreen
@@ -53,7 +53,7 @@ import com.example.ui.theme.MutedSage
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.SoftGrayText
 import com.example.ui.theme.SoftMintCard
-import com.example.ui.theme.VerifiedSky
+import com.example.ui.theme.VibrantGreen
 
 @Composable
 fun ProductCard(
@@ -65,7 +65,7 @@ fun ProductCard(
     modifier: Modifier = Modifier
 ) {
     val heartTint by animateColorAsState(
-        targetValue = if (isFavorite) CrimsonBadge else MutedSage,
+        targetValue = if (isFavorite) EmeraldGreen else MutedSage,
         animationSpec = tween(durationMillis = 180),
         label = "favorite_heart_tint"
     )
@@ -100,8 +100,8 @@ fun ProductCard(
                 // Top badge (বেস্ট সেলার / জনপ্রিয় / বিশেষ ছাড়)
                 if (product.badge.isNotBlank()) {
                     val badgeColor = when {
-                        product.badge.contains("জনপ্রিয়") -> CrimsonBadge
-                        product.badge.contains("ছাড়") -> Color(0xFFEA580C)
+                        product.badge.contains("জনপ্রিয়") -> DeepForestGreen
+                        product.badge.contains("ছাড়") -> VibrantGreen
                         else -> ForestGreen
                     }
                     Surface(
@@ -179,7 +179,7 @@ fun ProductCard(
                     Icon(
                         imageVector = Icons.Filled.Verified,
                         contentDescription = "যাচাইকৃত বিক্রেতা",
-                        tint = VerifiedSky,
+                        tint = EmeraldGreen,
                         modifier = Modifier.size(14.dp)
                     )
                 }
